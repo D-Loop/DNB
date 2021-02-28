@@ -15,7 +15,7 @@ namespace NbrbAPI.Models
         [JsonProperty("Cur_Code")]
         public string Cur_Code { get; set; }
         [JsonProperty("Cur_ID")]
-        public string Cur_ID { get; set; }
+        public int Cur_ID { get; set; }
         [JsonProperty("Cur_Abbreviation")]
         public string Cur_Abbreviation { get; set; }
         [JsonProperty("Cur_Name")]

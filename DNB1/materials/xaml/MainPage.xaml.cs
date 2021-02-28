@@ -83,7 +83,7 @@ namespace DNB1
                             if (k)
                             {
 
-                                currency.Cur_Code = order.Cur_Code;
+                                currency.Cur_ID = order.Cur_ID;
                                 currency.Cur_Code = order.Cur_Code;
                                 currency.Cur_Abbreviation = order.Cur_Abbreviation;
                                 currency.Cur_Name = order.Cur_Name;

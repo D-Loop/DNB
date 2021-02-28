@@ -28,8 +28,10 @@ namespace NbrbAPI.Models
     }
 
 
-    public class RateShort
+    public class RateShort : DefaultContractResolver
     {
+        public static readonly RateShort  Instance =
+         new RateShort();
         [JsonProperty("Cur_ID")]
         public int Cur_ID { get; set; }
         [JsonProperty("Date")]

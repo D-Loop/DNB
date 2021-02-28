@@ -71,6 +71,7 @@ namespace DNB1
                                     d = LCurr.Cur_Abbreviation == xKeyValueItemJSON.Cur_Abbreviation;
                                     if (d)
                                     {
+                                        rate.Cur_ID = LCurr.Cur_ID;
                                         rate.Date = xKeyValueItemJSON.Date;
                                         rate.Cur_Abbreviation = xKeyValueItemJSON.Cur_Abbreviation;
                                         rate.Cur_Name = xKeyValueItemJSON.Cur_Name;
@@ -108,6 +109,7 @@ namespace DNB1
                                         d = LCurr.Cur_Abbreviation == xKeyValueItemJSON.Cur_Abbreviation;
                                         if (d)
                                         {
+                                            rate.Cur_ID = LCurr.Cur_ID;
                                             rate.Date = xKeyValueItemJSON.Date;
                                             rate.Cur_Abbreviation = xKeyValueItemJSON.Cur_Abbreviation;
                                             rate.Cur_Name = xKeyValueItemJSON.Cur_Name;
@@ -149,21 +151,50 @@ namespace DNB1
 
         }
 
-        private void gree_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void gree_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            PointCollection pc = new PointCollection(100);
+
+            PointCollection pc = new PointCollection();
+
+
+
+            HttpClient Monthhttp = new HttpClient();
+            DateTime f = (DateTime)mainPage.To.SelectedDate;
+            string request = "https://www.nbrb.by/API/ExRates/Rates/Dynamics/"
+                             + ID.Content
+                             + "?startDate="
+                             + ((DateTime)mainPage.To.SelectedDate).Date.AddYears(-1).ToString("yyyy-MM-dd")
+                             + "&endDate="
+                             + ((DateTime)mainPage.To.SelectedDate).Date.ToString("yyyy-MM-dd");
+            string responseBody = await
+                (await Monthhttp.GetAsync(request)).
+                EnsureSuccessStatusCode().
+                Content.ReadAsStringAsync();
+            JArray jarr = (JArray)JsonConvert.DeserializeObject(responseBody);
+      
+
+            int k = 0;
+                foreach (JObject item in jarr)
+                {
+                    string responseString = "{\"" + (string)JObject.Parse(item.ToString())["Cur_Abbreviation"] + "\":[" + item.ToString() + "]}";
+                    Dictionary<string, List<RateShort>> itemFromJSON = JsonConvert.DeserializeObject<Dictionary<string, List<RateShort>>>
+                                         (responseString, new JsonSerializerSettings { ContractResolver = RateShort.Instance });
+                    foreach (var KeyValueItemFromJSON in itemFromJSON)
+                    {
+                        Rate rate = new Rate();
+                        foreach (var xKeyValueItemJSON in KeyValueItemFromJSON.Value)
+                        {
+                                
+                                 pc.Add(new Point(+k,+(double)xKeyValueItemJSON.Cur_OfficialRate*100));
+                                    k ++;
+
+                        }
+                    }
+                }
+
 
             
-            var id = SecondGrid.SelectedItems[0];
-
-            for (int i = 0; i < 99; i++)
-            {
-                pc.Add(new Point(i, i));
-
-            }
-            
-            //pc.Add(new Point(0, 100));
-            //pc.Add(new Point(0, 0));
+        
             
             Graph.Points = pc;
 
