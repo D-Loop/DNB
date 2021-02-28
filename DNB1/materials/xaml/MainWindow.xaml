@@ -18,6 +18,7 @@
             <RowDefinition Height="2*"/>
             <RowDefinition Height="17*"/>
         </Grid.RowDefinitions>
+        <Frame Grid.RowSpan="3" Grid.ColumnSpan="2" x:Name="MainF" Background="#FFFFBFBF" NavigationUIVisibility="Hidden"/>
         <Grid  Grid.ColumnSpan="2"  MouseDown="ToolBar_MouseDown"  VerticalAlignment="Center" Background="#FF861F41" Height="34" Margin="0,-4,0,0" >
             <StackPanel  x:Name="ToolBar" Height="30" Orientation="Horizontal"  HorizontalAlignment="Right">
                 <Button x:Name="hide" Style="{StaticResource MaterialDesignFloatingActionAccentButton}" VerticalContentAlignment="Bottom" Height="27" Width="27" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="hide_Click">
@@ -34,37 +35,10 @@
         <Grid Grid.ColumnSpan="1">
             <Label   MouseDown="ToolBar_MouseDown" Content="Экран курсов" Foreground="#FFE7CA89" FontSize="19" HorizontalContentAlignment="Left" Margin="10,0,94.5,0"/>
         </Grid>
-      
-        <Grid Grid.Row="1" Grid.Column="1" Background="#FF861F41">
-
-            <Label Margin="0,0,578,20" Content="Дата от:" VerticalContentAlignment="Bottom" Height="24" VerticalAlignment="Bottom" Foreground="#DDFFF6F6" HorizontalAlignment="Right" Width="49"/>
-            <DatePicker Name="From" Text="{Binding FilterValue}" Language="ru"  Margin="0,0,495,17" Foreground="Black" BorderBrush="#FFFDA4A4" HorizontalAlignment="Right" Width="83" VerticalAlignment="Bottom" Background="#FFFFBFBF" Focusable="False" />
-            <Label Margin="0,0,425,20" Content="Дата до:" VerticalContentAlignment="Bottom" Height="23" VerticalAlignment="Bottom" Foreground="#DDFFF6F6" HorizontalAlignment="Right" Width="53"/>
-            <DatePicker   x:Name="To" Text="{Binding FilterValue}" AllowDrop="False"  Language="ru" Margin="0,0,342,17" Foreground="Black" BorderBrush="#FFFDA4A4" HorizontalAlignment="Right" Width="78" VerticalAlignment="Bottom" Background="#FFFFBFBF" Focusable="False" />
-            <Button  VerticalContentAlignment="Top" x:Name="GetTheRate" Margin="0,0,208,16" Content="Получить курс" FontSize="11" Foreground="#FFFBF7F7" Background="#001B1B1C" Height="24" BorderBrush="White" Click="GetTheRate_Click" HorizontalAlignment="Right" Width="112" VerticalAlignment="Bottom"/>
-            <Button  x:Name="UploadToExcel" Margin="0,0,18,16" FontSize="11" Foreground="#FFFBF7F7" Background="#001B1B1C" Height="24" BorderBrush="White" Click="UploadToExcel_Click" HorizontalAlignment="Right" Width="159" VerticalAlignment="Bottom">
-                <StackPanel Orientation="Horizontal">
-                    <Label VerticalAlignment="Center" HorizontalAlignment="Left" Content="Выгрузить в Excel"  Foreground="White" Width="106" Height="24"/>
-                    <materialDesign:PackIcon Kind="MicrosoftExcel" Width="18" />
-                </StackPanel>
-            </Button>
-
-        </Grid>
         <Grid Grid.Row="1" Background="#FF861F41" >
             <Image Source="/materials/img/nacbank-rb.png" HorizontalAlignment="Left" Width="372" />
         </Grid>
-        <Grid Grid.ColumnSpan="2" Grid.Row="3">
-            <DataGrid  x:Name="gree" ItemsSource="{Binding Item}" Background="#FFFFBFBF" AutoGenerateColumns="False" SelectionChanged="gree_SelectionChanged">
-                <DataGrid.Columns>
-                    <materialDesign:DataGridTextColumn x:Name="date" Header="Периодичность" Binding="{Binding Cur_Periodicity}"/>
-                    <materialDesign:DataGridTextColumn Header="Код" Binding="{Binding Cur_Code}"/>
-                    <materialDesign:DataGridTextColumn Header="Код2" Binding="{Binding Cur_Abbreviation}"/>
-                    <materialDesign:DataGridTextColumn Header="На русском" Binding="{Binding Cur_Name}"/>
-                    <DataGridTextColumn Header="На английском" Binding="{Binding Cur_Name_Eng}"/>
-                </DataGrid.Columns>
-
-            </DataGrid>
-        </Grid>
+      
 
     </Grid>
 </Window>
