@@ -20,55 +20,17 @@ using Newtonsoft.Json.Converters;
 using System.Reflection;
 using System.Net.Http;
 using DNB1.materials.cs;
+using System.Collections.ObjectModel;
 
 namespace DNB1
 {
-    public class Currency : DefaultContractResolver
-    {
-        public static readonly Currency Instance =
-         new Currency(); 
-
-        [JsonProperty("Cur_Code")]
-        public string Cur_Code { get; set; }
-        [JsonProperty("Cur_Abbreviation")]
-        public string Cur_Abbreviation { get; set; }
-        [JsonProperty("Cur_Name")]
-        public string Cur_Name { get; set; }
-        [JsonProperty("Cur_Name_Eng")]
-        public string Cur_Name_Eng { get; set; }
-        [JsonProperty("Cur_Periodicity")]
-        public int Cur_Periodicity { get; set; }
-        public string Cur_PeriodicityString { get; set; }
-        [JsonProperty("Cur_DateStart")]
-        public DateTime Cur_DateStart { get; set; }
-        [JsonProperty("Cur_DateEnd")]
-        public DateTime Cur_DateEnd { get; set; }
-
-
-
-    }
-
-    //class Order : DefaultContractResolver
-    //{
-    //    public static readonly Order Instance =
-    //      new Order();
-
-    //    protected override JsonProperty CreateProperty(MemberInfo member,
-    //       MemberSerialization memberSerialization)
-    //    {
-    //        var property = base.CreateProperty(member, memberSerialization);
-
-    //        return property;
-    //    }
-    //}
-
 
     /// <summary>
     /// Логика взаимодействия для MainPage.xaml
     /// </summary>
     public partial class MainPage : Page
     {
-        public List<Currency> currencys = new List<Currency>();
+        public ObservableCollection<Currency> currencys = new ObservableCollection<Currency>();
         public MainPage()
         {
             InitializeComponent();
@@ -91,6 +53,7 @@ namespace DNB1
         {
             MoreInfo.Visibility = Visibility.Visible;
             Filt.Visibility = Visibility.Visible;
+            search.Visibility = Visibility.Visible;
             gree.ItemsSource = null;
             if (IsInRange(DateTime.ParseExact(From.Text, "dd.MM.yyyy", null), DateTime.ParseExact(To.Text, "dd.MM.yyyy", null), DateTime.ParseExact(To.Text, "dd.MM.yyyy", null), DateTime.ParseExact(From.Text, "dd.MM.yyyy", null)))
             {
@@ -119,10 +82,13 @@ namespace DNB1
                             k = IsInRange(order.Cur_DateStart, order.Cur_DateEnd, DateTime.ParseExact(From.Text, "dd.MM.yyyy", null), DateTime.ParseExact(To.Text, "dd.MM.yyyy", null));
                             if (k)
                             {
+
+                                currency.Cur_Code = order.Cur_Code;
                                 currency.Cur_Code = order.Cur_Code;
                                 currency.Cur_Abbreviation = order.Cur_Abbreviation;
                                 currency.Cur_Name = order.Cur_Name;
                                 currency.Cur_Name_Eng = order.Cur_Name_Eng;
+                                currency.Cur_Periodicity = order.Cur_Periodicity;
                                 if(order.Cur_Periodicity==0)
                                     currency.Cur_PeriodicityString = "Ежедневно";
                                 else
@@ -157,7 +123,7 @@ namespace DNB1
         private void MoreInfo_F(object sender, RoutedEventArgs e)
         {
 
-            NavigationService.Navigate(new SecondPage());
+            NavigationService.Navigate(new SecondPage(this));
 
         }
     }

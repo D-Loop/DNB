@@ -45,14 +45,15 @@
                 <DataGrid.Columns>
                     <materialDesign:DataGridTextColumn Header="Период обновления" Binding="{Binding Cur_PeriodicityString}"/>
                     <materialDesign:DataGridTextColumn Header="Код" Binding="{Binding Cur_Code}"/>
-                    <materialDesign:DataGridTextColumn Header="Код2" Binding="{Binding Cur_Abbreviation}"/>
+                    <materialDesign:DataGridTextColumn Header="Аббревиатура" Binding="{Binding Cur_Abbreviation}"/>
                     <materialDesign:DataGridTextColumn Header="На русском" Binding="{Binding Cur_Name}"/>
                     <DataGridTextColumn Header="На английском" Binding="{Binding Cur_Name_Eng}"/>
                 </DataGrid.Columns>
 
             </DataGrid>
         </Grid>
-        <Button  VerticalContentAlignment="Top" x:Name="MoreInfo" Margin="0,8,220,0" Content="Подробней" FontSize="11" Foreground="#FF861F41" Background="#FFFFBFBF" Height="24" BorderBrush="#FF861F41" Click="MoreInfo_F" HorizontalAlignment="Right" Width="88" VerticalAlignment="Top" Grid.Column="1" Grid.Row="2" Visibility="Hidden"/>
-        <TextBox  x:Name="Filt" Margin="0,8,17,0" Text="{Binding ValueFilter,UpdateSourceTrigger=PropertyChanged}" FontSize="11" Foreground="#FF861F41" Background="#FFFFBFBF" BorderBrush="#FF861F41" HorizontalAlignment="Right" Width="159" Grid.Column="1" Grid.Row="2" Height="24" VerticalAlignment="Top" Visibility="Hidden"/>
+        <Button  VerticalContentAlignment="Top" x:Name="MoreInfo" Margin="0,8,154,0" Content="Подробней" FontSize="11" Foreground="#FF861F41" Background="#FFFFBFBF" Height="24" BorderBrush="#FF861F41" Click="MoreInfo_F" HorizontalAlignment="Right" Width="88" VerticalAlignment="Top" Grid.Column="1" Grid.Row="2" RenderTransformOrigin="0.92,0.556" Visibility="Hidden"/>
+        <TextBox  x:Name="Filt" Margin="0,8,17,0" Text="{Binding ValueFilter,UpdateSourceTrigger=PropertyChanged}" FontSize="11" Foreground="#FF861F41" Background="#FFFFBFBF" BorderBrush="#FF861F41" HorizontalAlignment="Right" Width="126" Grid.Column="1" Grid.Row="2" Height="24" VerticalAlignment="Top" Visibility="Hidden"/>
+        <materialDesign:PackIcon Kind="Search" Height="20" Width="20" Grid.Column="1" Margin="590,0,0,480" Grid.Row="2" VerticalAlignment="Bottom" Foreground="#FF861F41" x:Name="search" Visibility="Hidden"/>
     </Grid>
 </Page>

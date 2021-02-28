@@ -72,6 +72,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="materials\cs\Currency.cs" />
+    <Compile Include="materials\cs\ViewSecondMod.cs" />
     <Compile Include="materials\xaml\SecondPage.xaml.cs">
       <DependentUpon>SecondPage.xaml</DependentUpon>
     </Compile>

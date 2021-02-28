@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Windows.Controls;
 using System.Windows.Data;
+using NbrbAPI.Models;
 
 namespace DNB1.materials.cs
 {
@@ -50,6 +51,8 @@ namespace DNB1.materials.cs
             Item.Filter = FilterCurrency;
 
         }
+
+
 
         private bool FilterCurrency(object obj)
         {
