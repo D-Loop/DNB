@@ -1,4 +1,5 @@
 ﻿using DNB1.materials.cs;
+using DNB1.materials.xaml;
 using NbrbAPI.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -10,6 +11,7 @@ using System.Data;
 using System.Net.Http;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms;
 using System.Windows.Media;
 using System.Windows.Navigation;
 
@@ -21,6 +23,8 @@ namespace DNB1
     {
         public ObservableCollection<Rate> lrate = new ObservableCollection<Rate>();
         private readonly MainPage mainPage;
+        public FolderBrowserDialog FBD = new FolderBrowserDialog();
+        public string nameFile = "";
 
         public SecondPage(MainPage mPage)
         {
@@ -148,6 +152,12 @@ namespace DNB1
 
         private void UploadToExcel_Click(object sender, RoutedEventArgs e)
         {
+            FN2 fN = new FN2(this);
+
+
+            if (FBD.ShowDialog() == DialogResult.OK)
+
+                fN.Show();
 
         }
 

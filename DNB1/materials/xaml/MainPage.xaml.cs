@@ -20,7 +20,9 @@ using Newtonsoft.Json.Converters;
 using System.Reflection;
 using System.Net.Http;
 using DNB1.materials.cs;
+using System.Windows.Forms;
 using System.Collections.ObjectModel;
+using DNB1.materials.xaml;
 
 namespace DNB1
 {
@@ -30,6 +32,9 @@ namespace DNB1
     /// </summary>
     public partial class MainPage : Page
     {
+        public string nameFile = "";
+        public FolderBrowserDialog FBD = new FolderBrowserDialog();
+
         public ObservableCollection<Currency> currencys = new ObservableCollection<Currency>();
         public MainPage()
         {
@@ -51,6 +56,7 @@ namespace DNB1
 
         private async void GetTheRate_Click(object sender, RoutedEventArgs e)
         {
+            UploadToExcel.IsEnabled = true;
             MoreInfo.Visibility = Visibility.Visible;
             Filt.Visibility = Visibility.Visible;
             search.Visibility = Visibility.Visible;
@@ -110,8 +116,13 @@ namespace DNB1
             return dateToCheck <= startDate && dateToCheck2 >= endDate;
         }
 
-        private void UploadToExcel_Click(object sender, RoutedEventArgs e)
+        private void UploadToExcel_Click(object sender, RoutedEventArgs e) 
         {
+                FN fN = new FN(this);
+
+
+            if (FBD.ShowDialog() == DialogResult.OK)
+                fN.Show();
 
         }
 
