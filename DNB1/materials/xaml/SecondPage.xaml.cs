@@ -167,7 +167,7 @@ namespace DNB1
             PointCollection pc = new PointCollection();
 
 
-
+            if (ID.Content == null) ID.Content="198";
             HttpClient Monthhttp = new HttpClient();
             DateTime f = (DateTime)mainPage.To.SelectedDate;
             string request = "https://www.nbrb.by/API/ExRates/Rates/Dynamics/"

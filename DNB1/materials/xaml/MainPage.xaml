@@ -7,7 +7,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="1024"
-      Title="MainPage">
+      Title="MainPage" Background="#FF861F41">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -41,7 +41,7 @@
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <DataGrid  x:Name="gree" ItemsSource="{Binding Item}" Background="#FFFFBFBF" AutoGenerateColumns="False" SelectionChanged="gree_SelectionChanged" Grid.ColumnSpan="2">
+            <DataGrid Margin="5,0,5,5" x:Name="gree" ItemsSource="{Binding Item}" Background="#FFFFBFBF" AutoGenerateColumns="False" SelectionChanged="gree_SelectionChanged" Grid.ColumnSpan="2">
                 <DataGrid.Columns>
                     <materialDesign:DataGridTextColumn Header="Период обновления" Binding="{Binding Cur_PeriodicityString}"/>
                     <materialDesign:DataGridTextColumn Header="Код" Binding="{Binding Cur_Code}"/>
@@ -51,9 +51,11 @@
                 </DataGrid.Columns>
 
             </DataGrid>
+            <Label Name="Alert" Content="&quot;Конец&quot; раньше  " HorizontalAlignment="Right" Margin="0,0,112,213" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Height="223" Width="820" FontSize="110" Foreground="#FF861F41"  Visibility="Hidden"/>
+            <Label Name="Alert2" Content="чем &quot;Начало&quot;" HorizontalAlignment="Right" Margin="0,0,152,55" VerticalAlignment="Bottom" Height="223" Width="676" FontSize="110" Grid.ColumnSpan="2" Foreground="#FF861F41" Visibility="Hidden"/>
         </Grid>
         <Button  VerticalContentAlignment="Top" x:Name="MoreInfo" Margin="0,8,154,0" Content="Подробней" FontSize="11" Foreground="#FF861F41" Background="#FFFFBFBF" Height="24" BorderBrush="#FF861F41" Click="MoreInfo_F" HorizontalAlignment="Right" Width="88" VerticalAlignment="Top" Grid.Column="1" Grid.Row="2" RenderTransformOrigin="0.92,0.556" Visibility="Hidden"/>
         <TextBox  x:Name="Filt" Margin="0,8,17,0" Text="{Binding ValueFilter,UpdateSourceTrigger=PropertyChanged}" FontSize="11" Foreground="#FF861F41" Background="#FFFFBFBF" BorderBrush="#FF861F41" HorizontalAlignment="Right" Width="126" Grid.Column="1" Grid.Row="2" Height="24" VerticalAlignment="Top" Visibility="Hidden"/>
-        <materialDesign:PackIcon Kind="Search" Height="20" Width="20" Grid.Column="1" Margin="590,0,0,480" Grid.Row="2" VerticalAlignment="Bottom" Foreground="#FF861F41" x:Name="search" Visibility="Hidden"/>
+        <materialDesign:PackIcon Kind="Search" Height="20" Width="20" Grid.Column="1" Margin="0,10,17,0" Grid.Row="2" VerticalAlignment="Top" Foreground="#FF861F41" x:Name="search" HorizontalAlignment="Right" Visibility="Hidden"/>
     </Grid>
 </Page>

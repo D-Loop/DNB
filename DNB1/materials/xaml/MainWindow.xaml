@@ -27,7 +27,7 @@
                 <Button x:Name="fuulscreen" Style="{StaticResource MaterialDesignFloatingActionAccentButton}" Height="27" Width="27" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="fuulscreen_Click">
                     <materialDesign:PackIcon Name="fspi" Kind="Fullscreen" />
                 </Button>
-                <Button x:Name="exit" Style="{StaticResource MaterialDesignFloatingActionAccentButton}" Height="27" Width="27" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="Exit_Click">
+                <Button x:Name="exit" Style="{StaticResource MaterialDesignFloatingActionAccentButton}" Height="27" Width="27" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="exit_Click_1">
                     <materialDesign:PackIcon Kind="Close" />
                 </Button>
             </StackPanel>

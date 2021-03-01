@@ -46,10 +46,6 @@ namespace DNB1
             MainF.Content = new MainPage();
         }
 
-        private void Exit_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
 
         private void fuulscreen_Click(object sender, RoutedEventArgs e)
         {
@@ -77,19 +73,9 @@ namespace DNB1
                 this.DragMove();
         }
 
-        private void GetTheRate_Click(object sender, RoutedEventArgs e)
+        private void exit_Click_1(object sender, RoutedEventArgs e)
         {
-              
-
-
-        }
-         private void UploadToExcel_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void gree_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+            Application.Current.Shutdown();
 
         }
     }

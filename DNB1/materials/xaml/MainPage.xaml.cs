@@ -45,9 +45,9 @@ namespace DNB1
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
 
-            From.BlackoutDates.Add(new CalendarDateRange(new DateTime(2050, 12, 12), new DateTime(3999, 1, 1)));
+            From.BlackoutDates.Add(new CalendarDateRange(DateTime.Now.AddDays(1), new DateTime(3999, 1, 1)));
             From.BlackoutDates.Add(new CalendarDateRange(new DateTime(1000, 12, 12), new DateTime(1995, 1, 1)));
-            To.BlackoutDates.Add(new CalendarDateRange(new DateTime(2050, 12, 12), new DateTime(3999, 1, 1)));
+            To.BlackoutDates.Add(new CalendarDateRange(DateTime.Now.AddDays(1), new DateTime(3999, 1, 1)));
             To.BlackoutDates.Add(new CalendarDateRange(new DateTime(1000, 12, 12), new DateTime(1995, 1, 1)));
 
             From.Text = DateTime.Now.ToString();
@@ -56,11 +56,15 @@ namespace DNB1
 
         private async void GetTheRate_Click(object sender, RoutedEventArgs e)
         {
+            Alert.Visibility = Visibility.Hidden;
+            Alert2.Visibility = Visibility.Hidden;
+
             UploadToExcel.IsEnabled = true;
             MoreInfo.Visibility = Visibility.Visible;
             Filt.Visibility = Visibility.Visible;
             search.Visibility = Visibility.Visible;
             gree.ItemsSource = null;
+
             if (IsInRange(DateTime.ParseExact(From.Text, "dd.MM.yyyy", null), DateTime.ParseExact(To.Text, "dd.MM.yyyy", null), DateTime.ParseExact(To.Text, "dd.MM.yyyy", null), DateTime.ParseExact(From.Text, "dd.MM.yyyy", null)))
             {
                 currencys.Clear();
@@ -107,6 +111,11 @@ namespace DNB1
                 }
                 gree.ItemsSource = currencys;
                 DataContext = new ViewMod(this);
+            }
+            else
+            {
+                Alert.Visibility = Visibility.Visible;
+                Alert2.Visibility = Visibility.Visible;
             }
 
         }
