@@ -45,7 +45,7 @@
                 <DataGrid.Columns>
                     <materialDesign:DataGridTextColumn Header="Период обновления" Binding="{Binding Cur_PeriodicityString}"/>
                     <materialDesign:DataGridTextColumn Header="Код" Binding="{Binding Cur_Code}"/>
-                    <materialDesign:DataGridTextColumn Header="Аббревиатура" Binding="{Binding Cur_Abbreviation}"/>
+                    <materialDesign:DataGridTextColumn Header="Обревиатура" Binding="{Binding Cur_Abbreviation}"/>
                     <materialDesign:DataGridTextColumn Header="На русском" Binding="{Binding Cur_Name}"/>
                     <DataGridTextColumn Header="На английском" Binding="{Binding Cur_Name_Eng}"/>
                 </DataGrid.Columns>
