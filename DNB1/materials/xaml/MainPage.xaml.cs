@@ -52,6 +52,7 @@ namespace DNB1
 
             From.Text = DateTime.Now.ToString();
             To.Text = DateTime.Now.ToString();
+            GetTheRate_Click(GetTheRate, new RoutedEventArgs());
         }
 
         private async void GetTheRate_Click(object sender, RoutedEventArgs e)
